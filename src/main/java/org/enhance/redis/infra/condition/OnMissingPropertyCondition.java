@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Mr_wenpan@163.com 2021/8/22 10:30 下午
  */
 @Order(Ordered.HIGHEST_PRECEDENCE + 50)
-class OnMissingPropertyCondition extends SpringBootCondition {
+public class OnMissingPropertyCondition extends SpringBootCondition {
 
     @Override
     public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {

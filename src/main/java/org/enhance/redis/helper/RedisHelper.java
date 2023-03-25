@@ -697,6 +697,7 @@ public class RedisHelper implements InitializingBean {
      *
      * @param key   key
      * @param value value
+     * @return long
      */
     public Long setRemove(String key, Object[] value) {
         return getSetOperations().remove(key, value);

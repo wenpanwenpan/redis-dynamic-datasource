@@ -1,7 +1,8 @@
 package org.enhance.redis;
 
+import org.enhance.redis.annotation.RedisDataSource;
 import org.enhance.redis.config.DynamicRedisTemplateFactory;
-import org.enhance.redis.config.properties.StoneRedisProperties;
+import org.enhance.redis.config.properties.RedisDataSourceProperties;
 import org.enhance.redis.helper.DynamicRedisHelper;
 import org.enhance.redis.helper.RedisHelper;
 import org.enhance.redis.infra.constant.DynamicRedisConstants;
@@ -131,10 +132,10 @@ public class RedisMultiDataSourceRegistrar implements EnvironmentAware, ImportBe
         @Override
         public Object getObject() throws Exception {
             // 获取配置文件中的参数，通过判断是否开启动态切换db来创建redisHelper
-            StoneRedisProperties stoneRedisProperties = applicationContext.getBean(StoneRedisProperties.class);
+            RedisDataSourceProperties dynamicRedisProperties = applicationContext.getBean(RedisDataSourceProperties.class);
             // 获取指定数据源对应的RedisTemplate
             RedisTemplate<String, String> redisTemplate = applicationContext.getBean(dataSourceName + "RedisTemplate", RedisTemplate.class);
-            if (stoneRedisProperties.getDynamicDatabase()) {
+            if (dynamicRedisProperties.getDynamicDatabase()) {
                 // 为该数据源创建一个Redis连接工厂(连接到指定的数据源)
                 DynamicRedisTemplateFactory<String, String> dynamicRedisTemplateFactory = getDynamicRedisTemplateFactory();
                 DynamicRedisTemplate<String, String> dynamicRedisTemplate = new DynamicRedisTemplate<>(dynamicRedisTemplateFactory);

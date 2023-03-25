@@ -1,4 +1,4 @@
-package org.enhance.redis;
+package org.enhance.redis.annotation;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.annotation.AliasFor;

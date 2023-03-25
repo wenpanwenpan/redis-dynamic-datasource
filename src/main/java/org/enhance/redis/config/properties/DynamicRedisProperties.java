@@ -4,13 +4,13 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * RedisProperties
+ * 动态Redis相关配置
  *
  * @author Mr_wenpan@163.com 2021/8/7 3:13 下午
  */
 @Data
-@ConfigurationProperties(prefix = StoneRedisProperties.PREFIX)
-public class StoneRedisProperties {
+@ConfigurationProperties(prefix = DynamicRedisProperties.PREFIX)
+public class DynamicRedisProperties {
 
     public static final String PREFIX = "dynamic.redis";
 

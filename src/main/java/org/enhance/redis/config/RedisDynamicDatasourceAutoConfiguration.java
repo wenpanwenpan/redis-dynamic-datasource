@@ -1,10 +1,10 @@
 package org.enhance.redis.config;
 
-import org.enhance.redis.EnableRedisMultiDataSource;
+import org.enhance.redis.annotation.EnableRedisMultiDataSource;
 import org.enhance.redis.RedisMultiDataSourceRegistrar;
 import org.enhance.redis.client.RedisMultiSourceClient;
 import org.enhance.redis.config.properties.RedisDataSourceProperties;
-import org.enhance.redis.config.properties.StoneRedisProperties;
+import org.enhance.redis.config.properties.DynamicRedisProperties;
 import org.enhance.redis.helper.ApplicationContextHelper;
 import org.enhance.redis.helper.DynamicRedisHelper;
 import org.enhance.redis.helper.RedisHelper;
@@ -38,7 +38,7 @@ import static org.enhance.redis.infra.constant.DynamicRedisConstants.DefaultRedi
  */
 @Configuration
 @ComponentScan({"org.enhance.redis.client"})
-@EnableConfigurationProperties({StoneRedisProperties.class, RedisDataSourceProperties.class})
+@EnableConfigurationProperties({DynamicRedisProperties.class, RedisDataSourceProperties.class})
 @ConditionalOnClass(name = {"org.springframework.data.redis.connection.RedisConnectionFactory"})
 public class RedisDynamicDatasourceAutoConfiguration {
 
@@ -224,7 +224,7 @@ public class RedisDynamicDatasourceAutoConfiguration {
         /**
          * 开启db动态切换
          */
-        @ConditionalOnProperty(prefix = StoneRedisProperties.PREFIX,
+        @ConditionalOnProperty(prefix = DynamicRedisProperties.PREFIX,
                 name = "dynamic-database", havingValue = "true", matchIfMissing = true)
         static class OnDynamicRedisHelper {
         }
@@ -257,7 +257,7 @@ public class RedisDynamicDatasourceAutoConfiguration {
         /**
          * 关闭db动态切换
          */
-        @ConditionalOnProperty(prefix = StoneRedisProperties.PREFIX, name = "dynamic-database", havingValue = "false")
+        @ConditionalOnProperty(prefix = DynamicRedisProperties.PREFIX, name = "dynamic-database", havingValue = "false")
         static class OnStaticRedisHelper {
         }
 

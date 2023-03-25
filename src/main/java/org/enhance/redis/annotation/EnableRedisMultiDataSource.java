@@ -1,5 +1,6 @@
-package org.enhance.redis;
+package org.enhance.redis.annotation;
 
+import org.enhance.redis.RedisMultiDataSourceRegistrar;
 import org.enhance.redis.client.RedisMultiSourceClient;
 import org.enhance.redis.runner.RedisMultiSourceRegisterRunner;
 import org.springframework.context.annotation.Import;

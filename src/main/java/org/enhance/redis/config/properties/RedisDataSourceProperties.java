@@ -19,6 +19,11 @@ public class RedisDataSourceProperties {
     static final String PREFIX = "spring.redis";
 
     /**
+     * 是否开启动态数据库切换 默认开启，如果关闭需要在yml中配置spring.redis.dynamic-database=false
+     */
+    private boolean dynamicDatabase = true;
+
+    /**
      * 数据源配置集合（key: 数据源名称， value: 数据源对应的Redis配置）
      */
     private Map<String, RedisProperties> datasource = new ConcurrentHashMap<>();
@@ -57,4 +62,13 @@ public class RedisDataSourceProperties {
     public RedisProperties getRedisProperties(String datasourceName) {
         return datasource.get(datasourceName);
     }
+
+    public boolean isDynamicDatabase() {
+        return dynamicDatabase;
+    }
+
+    public boolean getDynamicDatabase() {
+        return dynamicDatabase;
+    }
+
 }

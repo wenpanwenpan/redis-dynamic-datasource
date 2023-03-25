@@ -27,7 +27,7 @@ public class DynamicRedisTemplateFactory<K, V> {
     // ==============================================================================================================
     // 从data-redis源码得知，构建jedis客户端配置（JedisConnectionConfigure）或lettuce客户端配置（LettuceConnectionConfigure）
     // 需要如下参数，并且从spring自动配置模块的源码可以看到，这些属性会由springboot自动配置帮我们注入到容器中，所以这里可以通过构造器
-    // 将这些属性传递进来，并保存到属性上以便后面使用。经测试没有任何问题
+    // 将这些属性传递进来，并保存到属性上以便后面使用
     // ==============================================================================================================
 
     /**
@@ -94,7 +94,7 @@ public class DynamicRedisTemplateFactory<K, V> {
                 redisConnectionFactory = jedisConnectionConfigure.redisConnectionFactory();
                 break;
             default:
-                LOGGER.error("unknow redis client type.");
+                LOGGER.error("unknown redis client type.");
         }
         Assert.notNull(redisConnectionFactory, "redisConnectionFactory is null.");
         // 通过Redis连接工厂创建RedisTemplate
